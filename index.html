@@ -23,17 +23,10 @@
     --gray-700: #495057;
     --gray-800: #343A40;
     --gray-900: #212529;
-    --blue-50: #E6F1FB;
-    --blue-400: #378ADD;
-    --blue-800: #0C447C;
-    --amber-50: #FAEEDA;
-    --amber-600: #854F0B;
     --red-50: #FCEBEB;
     --red-600: #A32D2D;
-    --green-50: #EAF3DE;
-    --green-600: #3B6D11;
     --sidebar-w: 260px;
-    --header-h: 70px;
+    --header-h: 64px;
     --font: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
@@ -47,7 +40,7 @@
     line-height: 1.6;
   }
 
-  /* ── TOP HEADER ── */
+  /* ── TOP HEADER (simplified, no buttons) ── */
   .top-header {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -56,60 +49,32 @@
     display: flex;
     align-items: center;
     padding: 0 28px;
-    gap: 16px;
+    gap: 14px;
     z-index: 100;
     border-bottom: 3px solid var(--teal-400);
   }
-  .header-badge {
-    background: var(--teal-400);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+  .header-icon {
+    width: 34px;
+    height: 34px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
   }
+  .header-copy {}
   .header-title {
     color: #fff;
-    font-size: 17px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
   }
   .header-sub {
     color: var(--teal-100);
     font-size: 12px;
-    margin-top: 1px;
   }
-  .header-right {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .btn-export {
-    background: var(--teal-400);
-    color: #fff;
-    border: none;
-    padding: 8px 18px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    letter-spacing: 0.2px;
-    transition: background 0.15s;
-  }
-  .btn-export:hover { background: var(--teal-200); color: var(--teal-900); }
-  .btn-print {
-    background: transparent;
-    color: var(--teal-100);
-    border: 1px solid var(--teal-600);
-    padding: 7px 16px;
-    border-radius: 6px;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .btn-print:hover { border-color: var(--teal-200); color: #fff; }
 
   /* ── SIDEBAR ── */
   .sidebar {
@@ -122,64 +87,99 @@
     border-right: 1px solid var(--gray-200);
     overflow-y: auto;
     z-index: 90;
-    padding: 20px 0 40px;
+    padding: 16px 0 40px;
   }
-  .sidebar-label {
-    font-size: 10px;
+
+  /* Group labels */
+  .sidebar-group {
+    margin-top: 4px;
+  }
+  .sidebar-group-label {
+    font-size: 9.5px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--gray-500);
-    padding: 0 20px 12px;
+    color: var(--gray-400);
+    padding: 14px 18px 5px;
+    display: block;
   }
+  .sidebar-group:first-child .sidebar-group-label {
+    padding-top: 4px;
+  }
+
   .nav-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 9px 20px;
+    gap: 9px;
+    padding: 7px 18px;
     cursor: pointer;
     transition: background 0.12s;
     border-left: 3px solid transparent;
     text-decoration: none;
-    color: var(--gray-700);
+    color: var(--gray-600);
   }
   .nav-item:hover { background: var(--teal-50); color: var(--teal-600); }
-  .nav-item.active { background: var(--teal-50); border-left-color: var(--teal-400); color: var(--teal-800); font-weight: 600; }
+  .nav-item.active {
+    background: var(--teal-50);
+    border-left-color: var(--teal-400);
+    color: var(--teal-800);
+    font-weight: 600;
+  }
   .nav-num {
-    width: 22px; height: 22px;
-    background: var(--gray-200);
+    width: 20px; height: 20px;
+    background: var(--gray-100);
     border-radius: 50%;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    color: var(--gray-600);
+    color: var(--gray-500);
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
     transition: all 0.12s;
   }
   .nav-item.active .nav-num { background: var(--teal-400); color: #fff; }
   .nav-text { font-size: 12.5px; line-height: 1.3; }
-  .nav-item.complete .nav-num { background: var(--green-50); color: var(--green-600); }
 
   /* ── MAIN CONTENT ── */
   .main {
     margin-left: var(--sidebar-w);
     margin-top: var(--header-h);
-    padding: 32px 40px 80px;
+    padding: 28px 40px 80px;
     max-width: 900px;
   }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 10px 14px;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray-600); }
 
   /* ── FORM META ── */
   .form-meta {
     background: #fff;
     border: 1px solid var(--gray-200);
     border-radius: 10px;
-    padding: 24px 28px;
-    margin-bottom: 28px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
-  .meta-field label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 5px; }
+  .meta-field label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 5px;
+  }
   .meta-field input, .meta-field select {
     width: 100%;
     border: 1px solid var(--gray-300);
@@ -190,45 +190,70 @@
     background: var(--gray-50);
     outline: none;
     transition: border 0.12s;
+    font-family: var(--font);
   }
-  .meta-field input:focus, .meta-field select:focus { border-color: var(--teal-400); background: #fff; }
+  .meta-field input:focus, .meta-field select:focus {
+    border-color: var(--teal-400);
+    background: #fff;
+  }
 
-  /* ── SECTION CARD ── */
+  /* ── SECTION CARD (accordion) ── */
   .section-card {
     background: #fff;
     border: 1px solid var(--gray-200);
     border-radius: 10px;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
     overflow: hidden;
+    transition: box-shadow 0.2s, margin-bottom 0.15s;
+  }
+  .section-card.open {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    margin-bottom: 16px;
   }
   .section-header {
     display: flex;
     align-items: center;
     gap: 14px;
-    padding: 18px 28px;
+    padding: 15px 24px;
     background: var(--gray-50);
-    border-bottom: 1px solid var(--gray-200);
     cursor: pointer;
     user-select: none;
+    border-bottom: 1px solid transparent;
+    transition: background 0.12s;
   }
-  .section-header:hover { background: var(--teal-50); }
+  .section-card.open .section-header {
+    border-bottom-color: var(--gray-200);
+  }
+  .section-header:hover { background: #eef1f3; }
   .sec-num {
-    width: 32px; height: 32px;
+    width: 28px; height: 28px;
     background: var(--teal-800);
     color: #fff;
     border-radius: 50%;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
-  .sec-title { font-size: 15px; font-weight: 700; color: var(--gray-900); }
-  .sec-subtitle { font-size: 12px; color: var(--gray-500); margin-top: 1px; }
-  .sec-toggle { margin-left: auto; font-size: 18px; color: var(--gray-500); transition: transform 0.2s; }
-  .section-header.collapsed .sec-toggle { transform: rotate(-90deg); }
-  .section-body { padding: 24px 28px; }
+  .sec-title { font-size: 14px; font-weight: 700; color: var(--gray-900); }
+  .sec-subtitle { font-size: 11.5px; color: var(--gray-500); margin-top: 1px; }
+  .sec-toggle {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--gray-400);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .section-card:not(.open) .sec-toggle { transform: rotate(-90deg); }
 
-  /* ── FIELD GROUPS ── */
+  /* Body hidden by default; .open reveals it */
+  .section-body {
+    padding: 22px 24px;
+    display: none;
+  }
+  .section-card.open .section-body { display: block; }
+
+  /* ── FIELDS ── */
   .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; }
   .field-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
   .field-grid.cols-1 { grid-template-columns: 1fr; }
@@ -242,10 +267,31 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    flex-wrap: wrap;
   }
+
   .req { color: #e53e3e; font-size: 13px; }
-  .crit { background: #FFF3CD; color: #856404; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.3px; }
-  .opt { background: var(--gray-100); color: var(--gray-500); font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 10px; text-transform: uppercase; }
+
+  /* ΚΡΙΣΙΜΟ badge – fewer, more impactful */
+  .crit {
+    background: #FFF3CD;
+    color: #856404;
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .opt {
+    background: var(--gray-100);
+    color: var(--gray-500);
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+    text-transform: uppercase;
+  }
 
   .field input[type="text"],
   .field input[type="email"],
@@ -271,16 +317,25 @@
     box-shadow: 0 0 0 3px rgba(29,158,117,0.12);
   }
   .field textarea { resize: vertical; min-height: 80px; }
-  .help { font-size: 11.5px; color: var(--gray-500); margin-top: 1px; }
-  .help.info { color: var(--blue-800); background: var(--blue-50); padding: 5px 8px; border-radius: 4px; }
-  .help.warn { color: var(--amber-600); background: var(--amber-50); padding: 5px 8px; border-radius: 4px; }
-  .help.crit-tip { color: var(--red-600); background: var(--red-50); padding: 5px 8px; border-radius: 4px; }
+
+  /* Helper text – muted by default, no colored boxes */
+  .help {
+    font-size: 11.5px;
+    color: var(--gray-500);
+    margin-top: 1px;
+    line-height: 1.4;
+  }
+
+  /* Only truly critical warnings retain a subtle red marker */
+  .help.crit-tip {
+    color: var(--red-600);
+  }
 
   /* ── YES/NO TOGGLE ── */
   .yn-group { display: flex; gap: 8px; }
   .yn-opt { display: none; }
   .yn-label {
-    padding: 8px 20px;
+    padding: 7px 18px;
     border: 1.5px solid var(--gray-300);
     border-radius: 6px;
     cursor: pointer;
@@ -303,7 +358,7 @@
     margin-top: 6px;
   }
   .sub-title {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -316,7 +371,7 @@
   .sub-title::before {
     content: '';
     display: inline-block;
-    width: 3px; height: 14px;
+    width: 3px; height: 13px;
     background: var(--teal-400);
     border-radius: 2px;
   }
@@ -324,140 +379,140 @@
   /* ── DIVIDER ── */
   .divider { border: none; border-top: 1px solid var(--gray-200); margin: 20px 0; }
 
-  /* ── PROGRESS BAR ── */
-  .progress-bar { background: var(--gray-200); height: 4px; border-radius: 2px; margin-bottom: 20px; overflow: hidden; }
-  .progress-fill { background: var(--teal-400); height: 100%; border-radius: 2px; transition: width 0.3s; width: 0%; }
-
   /* ── SUBMIT FOOTER ── */
   .submit-footer {
-    background: var(--gray-800);
+    background: var(--teal-800);
     color: #fff;
     border-radius: 10px;
-    padding: 24px 28px;
+    padding: 22px 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 12px;
+    margin-top: 16px;
   }
-  .submit-info { font-size: 13px; color: var(--gray-400); }
+  .submit-info {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 3px;
+  }
   .btn-submit {
     background: var(--teal-400);
     color: #fff;
     border: none;
-    padding: 12px 32px;
+    padding: 13px 30px;
     border-radius: 7px;
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
     letter-spacing: 0.3px;
-    transition: background 0.15s;
+    transition: background 0.15s, transform 0.1s;
   }
-  .btn-submit:hover { background: var(--teal-200); color: var(--teal-900); }
-
-  /* ── LEGEND ── */
-  .legend {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    padding: 12px 16px;
-    background: var(--gray-50);
-    border: 1px solid var(--gray-200);
-    border-radius: 8px;
-    margin-bottom: 24px;
-  }
-  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--gray-600); }
+  .btn-submit:hover { background: var(--teal-200); color: var(--teal-900); transform: translateY(-1px); }
 
   /* ── PRINT ── */
   @media print {
-    .sidebar, .top-header, .submit-footer, .btn-export, .btn-print, .progress-bar { display: none !important; }
+    .sidebar, .top-header, .submit-footer { display: none !important; }
     .main { margin: 0; padding: 16px; max-width: 100%; }
     .section-card { break-inside: avoid; }
-    .section-body.collapsed { display: block !important; }
+    .section-body { display: block !important; }
+  }
+
+  @media (max-width: 1100px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
   }
 
   @media (max-width: 768px) {
-    .sidebar { display: none; }
-    .main { margin-left: 0; padding: 16px; }
+    .main { padding: 16px; }
     .field-grid { grid-template-columns: 1fr; }
     .form-meta { grid-template-columns: 1fr; }
+    .submit-footer { flex-direction: column; gap: 14px; align-items: flex-start; }
   }
 </style>
 </head>
 <body>
 
-<!-- TOP HEADER -->
+<!-- ══ TOP HEADER ══ -->
 <header class="top-header">
-  <div>
-    <div class="header-badge">Project Intake</div>
-  </div>
-  <div>
-    <div class="header-title">Φόρμα Έναρξης Έργου – Μετάβαση Φαρμακείου</div>
-  </div>
-  <div class="header-right">
-    <button class="btn-print" onclick="window.print()">🖨 Εκτύπωση</button>
-    <button class="btn-export" onclick="exportForm()">⬇ Εξαγωγή JSON</button>
+  <div class="header-icon">💊</div>
+  <div class="header-copy">
+    <div class="header-title">Φόρμα Intake Μετάβασης Φαρμακείου</div>
+    <div class="header-sub">Συμπληρώστε τα βασικά στοιχεία για τον σχεδιασμό και την ομαλή μετάβαση.</div>
   </div>
 </header>
 
-<!-- SIDEBAR -->
+<!-- ══ SIDEBAR with semantic grouping ══ -->
 <nav class="sidebar">
-  <div class="sidebar-label">Ενότητες</div>
-  <a class="nav-item active" href="#s1">
-    <span class="nav-num">1</span>
-    <span class="nav-text">Στοιχεία Καταστήματος</span>
-  </a>
-  <a class="nav-item" href="#s2">
-    <span class="nav-num">2</span>
-    <span class="nav-text">Στοιχεία Νέας Εταιρείας</span>
-  </a>
-  <a class="nav-item" href="#s3">
-    <span class="nav-num">3</span>
-    <span class="nav-text">Υποδομή &amp; Hardware</span>
-  </a>
-  <a class="nav-item" href="#s4">
-    <span class="nav-num">4</span>
-    <span class="nav-text">Δίκτυο &amp; Συνδεσιμότητα</span>
-  </a>
-  <a class="nav-item" href="#s5">
-    <span class="nav-num">5</span>
-    <span class="nav-text">Υπάρχον Λογισμικό</span>
-  </a>
-  <a class="nav-item" href="#s6">
-    <span class="nav-num">6</span>
-    <span class="nav-text">Εύρος Migration</span>
-  </a>
-  <a class="nav-item" href="#s7">
-    <span class="nav-num">7</span>
-    <span class="nav-text">Αποθήκη &amp; Λειτουργίες</span>
-  </a>
-  <a class="nav-item" href="#s8">
-    <span class="nav-num">8</span>
-    <span class="nav-text">E-Invoicing &amp; Συναλλαγές</span>
-  </a>
-  <a class="nav-item" href="#s9">
-    <span class="nav-num">9</span>
-    <span class="nav-text">Loyalty &amp; CRM</span>
-  </a>
-  <a class="nav-item" href="#s10">
-    <span class="nav-num">10</span>
-    <span class="nav-text">Εκπαίδευση &amp; Υποστήριξη</span>
-  </a>
-  <a class="nav-item" href="#s11">
-    <span class="nav-num">11</span>
-    <span class="nav-text">Πρόσθετες Σημειώσεις</span>
-  </a>
+
+  <div class="sidebar-group">
+    <span class="sidebar-group-label">Βασικά Στοιχεία</span>
+    <a class="nav-item active" href="#s1">
+      <span class="nav-num">1</span>
+      <span class="nav-text">Κατάστημα</span>
+    </a>
+    <a class="nav-item" href="#s2">
+      <span class="nav-num">2</span>
+      <span class="nav-text">Εταιρεία</span>
+    </a>
+  </div>
+
+  <div class="sidebar-group">
+    <span class="sidebar-group-label">Υποδομή</span>
+    <a class="nav-item" href="#s3">
+      <span class="nav-num">3</span>
+      <span class="nav-text">Hardware</span>
+    </a>
+    <a class="nav-item" href="#s4">
+      <span class="nav-num">4</span>
+      <span class="nav-text">Δίκτυο</span>
+    </a>
+    <a class="nav-item" href="#s5">
+      <span class="nav-num">5</span>
+      <span class="nav-text">Λογισμικό</span>
+    </a>
+  </div>
+
+  <div class="sidebar-group">
+    <span class="sidebar-group-label">Migration & Operations</span>
+    <a class="nav-item" href="#s6">
+      <span class="nav-num">6</span>
+      <span class="nav-text">Migration</span>
+    </a>
+    <a class="nav-item" href="#s7">
+      <span class="nav-num">7</span>
+      <span class="nav-text">Αποθήκη</span>
+    </a>
+    <a class="nav-item" href="#s8">
+      <span class="nav-num">8</span>
+      <span class="nav-text">E-Invoicing</span>
+    </a>
+  </div>
+
+  <div class="sidebar-group">
+    <span class="sidebar-group-label">Υποστήριξη</span>
+    <a class="nav-item" href="#s9">
+      <span class="nav-num">9</span>
+      <span class="nav-text">Loyalty & CRM</span>
+    </a>
+    <a class="nav-item" href="#s10">
+      <span class="nav-num">10</span>
+      <span class="nav-text">Training</span>
+    </a>
+    <a class="nav-item" href="#s11">
+      <span class="nav-num">11</span>
+      <span class="nav-text">Σημειώσεις</span>
+    </a>
+  </div>
+
 </nav>
 
-<!-- MAIN FORM -->
+<!-- ══ MAIN FORM ══ -->
 <main class="main">
-
-  <!-- Progress -->
-  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
 
   <!-- Legend -->
   <div class="legend">
     <div class="legend-item"><span class="req">*</span> Υποχρεωτικό πεδίο</div>
-    <div class="legend-item"><span class="crit">ΚΡΙΣΙΜΟ</span> Κρίσιμο για go-live</div>
+    <div class="legend-item"><span class="crit">ΚΡΙΣΙΜΟ</span> Go-live ή migration blocker</div>
     <div class="legend-item"><span class="opt">ΠΡΟΑΙΡΕΤΙΚΟ</span> Προαιρετικό πεδίο</div>
   </div>
 
@@ -475,10 +530,10 @@
 
   <form id="intakeForm" novalidate>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 1 – STORE INFORMATION
-  ═══════════════════════════════════════════ -->
-  <div class="section-card" id="s1">
+  <!-- ══════════════════════════════════════════════
+       SECTION 1 – STORE INFORMATION  [open by default]
+  ══════════════════════════════════════════════ -->
+  <div class="section-card open" id="s1">
     <div class="section-header" onclick="toggleSection(this)">
       <div class="sec-num">1</div>
       <div>
@@ -491,14 +546,14 @@
       <div class="field-grid">
 
         <div class="field">
-          <label>Επωνυμία Φαρμακείου <span class="req">*</span> <span class="crit">ΚΡΙΣΙΜΟ</span></label>
+          <label>Επωνυμία Φαρμακείου <span class="req">*</span></label>
           <input type="text" name="pharmacyName" placeholder="π.χ. Φαρμακείο Παπαδόπουλος" required>
         </div>
 
         <div class="field">
           <label>Προγραμματισμένη Ημερομηνία Go-Live <span class="req">*</span> <span class="crit">ΚΡΙΣΙΜΟ</span></label>
           <input type="date" name="goLiveDate" required>
-          <span class="help crit-tip">⚠ Κρίσιμο πεδίο – Καθορίζει το χρονοδιάγραμμα όλων των δραστηριοτήτων.</span>
+          <span class="help crit-tip">Καθορίζει το συνολικό χρονοδιάγραμμα του έργου.</span>
         </div>
 
         <div class="field field-full">
@@ -524,7 +579,7 @@
       <div class="field-grid">
 
         <div class="field">
-          <label>Ονοματεπώνυμο Επαφής <span class="req">*</span> <span class="crit">ΚΡΙΣΙΜΟ</span></label>
+          <label>Ονοματεπώνυμο Επαφής <span class="req">*</span></label>
           <input type="text" name="contactName" placeholder="Ονοματεπώνυμο" required>
         </div>
 
@@ -544,6 +599,7 @@
         <div class="field">
           <label>Κινητό Τηλέφωνο <span class="req">*</span> <span class="crit">ΚΡΙΣΙΜΟ</span></label>
           <input type="tel" name="contactMobile" placeholder="69X XXXXXXX" required>
+          <span class="help crit-tip">Κύριο κανάλι επικοινωνίας κατά τη διάρκεια του έργου.</span>
         </div>
 
         <div class="field">
@@ -555,9 +611,9 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 2 – NEW COMPANY INFORMATION
-  ═══════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════
+       SECTION 2 – NEW COMPANY INFORMATION  [collapsed]
+  ══════════════════════════════════════════════ -->
   <div class="section-card" id="s2">
     <div class="section-header" onclick="toggleSection(this)">
       <div class="sec-num">2</div>
@@ -571,18 +627,18 @@
       <div class="field-grid">
 
         <div class="field">
-          <label>Επωνυμία Εταιρείας (Νομική) <span class="req">*</span> <span class="crit">ΚΡΙΣΙΜΟ</span></label>
+          <label>Επωνυμία Εταιρείας (Νομική) <span class="req">*</span></label>
           <input type="text" name="companyName" placeholder="Νομική επωνυμία" required>
         </div>
 
         <div class="field">
-          <label>ΑΦΜ <span class="req">*</span> <span class="crit">ΚΡΙΣΙΜΟ</span></label>
+          <label>ΑΦΜ <span class="req">*</span></label>
           <input type="text" name="vatNumber" placeholder="123456789" maxlength="9" required>
-          <span class="help">9 ψηφία – Θα χρησιμοποιηθεί για ρύθμιση τιμολόγησης και ΕΦΚΑ.</span>
+          <span class="help">9 ψηφία – χρησιμοποιείται για ρύθμιση τιμολόγησης και ΕΦΚΑ.</span>
         </div>
 
         <div class="field">
-          <label>ΔΟΥ <span class="req">*</span> <span class="crit">ΚΡΙΣΙΜΟ</span></label>
+          <label>ΔΟΥ <span class="req">*</span></label>
           <input type="text" name="taxOffice" placeholder="π.χ. Α΄ Αθηνών" required>
         </div>
 
@@ -608,9 +664,9 @@
         </div>
 
         <div class="field">
-          <label>Email Λογιστηρίου <span class="req">*</span> <span class="crit">ΚΡΙΣΙΜΟ</span></label>
+          <label>Email Λογιστηρίου <span class="req">*</span></label>
           <input type="email" name="accountingEmail" placeholder="logistirio@firma.gr" required>
-          <span class="help crit-tip">Απαραίτητο για ρύθμιση e-invoicing και φορολογικής σύνδεσης.</span>
+          <span class="help">Απαραίτητο για ρύθμιση e-invoicing και φορολογικής σύνδεσης.</span>
         </div>
 
         <div class="field">
@@ -622,9 +678,9 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 3 – INFRASTRUCTURE & HARDWARE
-  ═══════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════
+       SECTION 3 – INFRASTRUCTURE & HARDWARE  [collapsed]
+  ══════════════════════════════════════════════ -->
   <div class="section-card" id="s3">
     <div class="section-header" onclick="toggleSection(this)">
       <div class="sec-num">3</div>
@@ -684,7 +740,7 @@
             <input class="yn-opt no-opt" type="radio" name="newServer" id="ns-n" value="Όχι">
             <label class="yn-label" for="ns-n">Όχι</label>
           </div>
-          <span class="help crit-tip">Εάν ΝΑΙ, συμπληρώστε τα παρακάτω specifications.</span>
+          <span class="help">Εάν ΝΑΙ, συμπληρώστε τις παρακάτω προδιαγραφές.</span>
         </div>
       </div>
 
@@ -694,7 +750,7 @@
           <div class="field">
             <label>CPU <span class="opt">ΠΡΟΑΙΡΕΤΙΚΟ</span></label>
             <input type="text" name="serverCPU" placeholder="π.χ. Intel Xeon E-2300">
-            <span class="help info">ℹ Ελάχιστο: Quad-core 2.5GHz+</span>
+            <span class="help">Ελάχιστο: Quad-core 2.5GHz+</span>
           </div>
           <div class="field">
             <label>RAM <span class="req">*</span></label>
@@ -706,12 +762,12 @@
               <option>64 GB</option>
               <option>Άλλο</option>
             </select>
-            <span class="help info">ℹ Ελάχιστο απαιτούμενο: 16 GB για production.</span>
+            <span class="help">Ελάχιστο απαιτούμενο: 16 GB για production.</span>
           </div>
           <div class="field">
             <label>Storage</label>
             <input type="text" name="serverStorage" placeholder="π.χ. 500GB SSD + 2TB HDD">
-            <span class="help info">ℹ SSD συνιστάται για SQL data files.</span>
+            <span class="help">SSD συνιστάται για SQL data files.</span>
           </div>
           <div class="field">
             <label>Λειτουργικό Σύστημα <span class="req">*</span></label>
@@ -745,14 +801,14 @@
       <div class="sub-title">Ασφάλεια &amp; Εξοπλισμός Δικτύου</div>
       <div class="field-grid cols-3">
         <div class="field">
-          <label>UPS Διαθέσιμο; <span class="crit">ΚΡΙΣΙΜΟ</span></label>
+          <label>UPS Διαθέσιμο;</label>
           <div class="yn-group">
             <input class="yn-opt" type="radio" name="upsAvail" id="ups-y" value="Ναι">
             <label class="yn-label" for="ups-y">Ναι</label>
             <input class="yn-opt no-opt" type="radio" name="upsAvail" id="ups-n" value="Όχι">
             <label class="yn-label" for="ups-n">Όχι</label>
           </div>
-          <span class="help warn">⚡ Απαραίτητο για προστασία server και ΠΟΣ.</span>
+          <span class="help">Απαραίτητο για προστασία server και POS.</span>
         </div>
         <div class="field">
           <label>Firewall Διαθέσιμο;</label>
@@ -777,9 +833,9 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 4 – NETWORK & CONNECTIVITY
-  ═══════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════
+       SECTION 4 – NETWORK & CONNECTIVITY  [collapsed]
+  ══════════════════════════════════════════════ -->
   <div class="section-card" id="s4">
     <div class="section-header" onclick="toggleSection(this)">
       <div class="sec-num">4</div>
@@ -841,7 +897,7 @@
             <input class="yn-opt no-opt" type="radio" name="staticIP" id="sip-n" value="Όχι">
             <label class="yn-label" for="sip-n">Όχι</label>
           </div>
-          <span class="help warn">⚡ Απαραίτητο για remote support και VPN.</span>
+          <span class="help crit-tip">Απαραίτητη για remote support και VPN πρόσβαση.</span>
         </div>
 
         <div class="field">
@@ -871,9 +927,9 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 5 – EXISTING SOFTWARE & VENDORS
-  ═══════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════
+       SECTION 5 – EXISTING SOFTWARE & VENDORS  [collapsed]
+  ══════════════════════════════════════════════ -->
   <div class="section-card" id="s5">
     <div class="section-header" onclick="toggleSection(this)">
       <div class="sec-num">5</div>
@@ -913,7 +969,7 @@
         <div class="field">
           <label>Τηλέφωνο Προμηθευτή <span class="crit">ΚΡΙΣΙΜΟ</span></label>
           <input type="tel" name="vendorPhone" placeholder="210 XXXXXXX">
-          <span class="help crit-tip">Θα χρειαστεί για συντονισμό migration και εξαγωγή δεδομένων.</span>
+          <span class="help crit-tip">Απαραίτητο για συντονισμό migration και εξαγωγή δεδομένων.</span>
         </div>
 
         <div class="field">
@@ -966,9 +1022,9 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 6 – MIGRATION SCOPE
-  ═══════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════
+       SECTION 6 – MIGRATION SCOPE  [collapsed]
+  ══════════════════════════════════════════════ -->
   <div class="section-card" id="s6">
     <div class="section-header" onclick="toggleSection(this)">
       <div class="sec-num">6</div>
@@ -983,7 +1039,7 @@
       <div class="sub-title">Απαιτήσεις Migration Δεδομένων</div>
       <div class="field-grid">
         <div class="field">
-          <label>Migration Πελατών Απαραίτητο; <span class="crit">ΚΡΙΣΙΜΟ</span></label>
+          <label>Migration Πελατών; <span class="crit">ΚΡΙΣΙΜΟ</span></label>
           <div class="yn-group">
             <input class="yn-opt" type="radio" name="migCustomers" id="mc-y" value="Ναι">
             <label class="yn-label" for="mc-y">Ναι</label>
@@ -992,7 +1048,7 @@
           </div>
         </div>
         <div class="field">
-          <label>Migration Δεδομένων Loyalty; <span class="crit">ΚΡΙΣΙΜΟ</span></label>
+          <label>Migration Δεδομένων Loyalty;</label>
           <div class="yn-group">
             <input class="yn-opt" type="radio" name="migLoyalty" id="ml-y" value="Ναι">
             <label class="yn-label" for="ml-y">Ναι</label>
@@ -1035,7 +1091,7 @@
         <div class="field">
           <label>Εκτιμώμενος Αριθμός Πελατών</label>
           <input type="number" name="estCustomers" min="0" placeholder="π.χ. 5000">
-          <span class="help info">ℹ Επηρεάζει χρόνο migration και δοκιμών.</span>
+          <span class="help">Επηρεάζει χρόνο migration και δοκιμών.</span>
         </div>
         <div class="field">
           <label>Εκτιμώμενα Μέλη Loyalty</label>
@@ -1046,18 +1102,18 @@
           <input type="number" name="estPrescriptions" min="0" placeholder="π.χ. 15000">
         </div>
         <div class="field">
-          <label>Εκτιμώμενα Είδη Αποθέματος <span class="crit">ΚΡΙΣΙΜΟ</span></label>
+          <label>Εκτιμώμενα Είδη Αποθέματος</label>
           <input type="number" name="estInventoryItems" min="0" placeholder="π.χ. 8000">
-          <span class="help crit-tip">Καθορίζει ανάγκη full inventory mapping πριν go-live.</span>
+          <span class="help">Καθορίζει ανάγκη πλήρους inventory mapping πριν go-live.</span>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 7 – INVENTORY & OPERATIONS
-  ═══════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════
+       SECTION 7 – INVENTORY & OPERATIONS  [collapsed]
+  ══════════════════════════════════════════════ -->
   <div class="section-card" id="s7">
     <div class="section-header" onclick="toggleSection(this)">
       <div class="sec-num">7</div>
@@ -1092,7 +1148,7 @@
         </div>
 
         <div class="field">
-          <label>Βιβλίο Αποθήκης Διαθέσιμο; <span class="crit">ΚΡΙΣΙΜΟ</span></label>
+          <label>Βιβλίο Αποθήκης Διαθέσιμο;</label>
           <div class="yn-group">
             <input class="yn-opt" type="radio" name="bookInventory" id="bi-y" value="Ναι">
             <label class="yn-label" for="bi-y">Ναι</label>
@@ -1102,7 +1158,7 @@
         </div>
 
         <div class="field">
-          <label>Παρακολούθηση Ημερομηνίας Λήξης Απαιτείται;</label>
+          <label>Παρακολούθηση Ημερομηνίας Λήξης;</label>
           <div class="yn-group">
             <input class="yn-opt" type="radio" name="expiryTracking" id="et-y" value="Ναι">
             <label class="yn-label" for="et-y">Ναι</label>
@@ -1112,7 +1168,7 @@
         </div>
 
         <div class="field">
-          <label>Παρακολούθηση Min/Max Stock Απαιτείται;</label>
+          <label>Παρακολούθηση Min/Max Stock;</label>
           <div class="yn-group">
             <input class="yn-opt" type="radio" name="minMaxStock" id="mm-y" value="Ναι">
             <label class="yn-label" for="mm-y">Ναι</label>
@@ -1125,9 +1181,9 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 8 – E-INVOICING & TRANSACTIONS
-  ═══════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════
+       SECTION 8 – E-INVOICING & TRANSACTIONS  [collapsed]
+  ══════════════════════════════════════════════ -->
   <div class="section-card" id="s8">
     <div class="section-header" onclick="toggleSection(this)">
       <div class="sec-num">8</div>
@@ -1150,7 +1206,7 @@
             <option>60.000 – 100.000</option>
             <option>&gt; 100.000</option>
           </select>
-          <span class="help info">ℹ Επηρεάζει πλάνο αδειοδότησης myDATA.</span>
+          <span class="help">Επηρεάζει πλάνο αδειοδότησης myDATA.</span>
         </div>
 
         <div class="field">
@@ -1161,7 +1217,7 @@
             <input class="yn-opt no-opt" type="radio" name="eInvKeys" id="ek-n" value="Όχι">
             <label class="yn-label" for="ek-n">Όχι</label>
           </div>
-          <span class="help crit-tip">ΑΑΔΕ API keys απαραίτητα πριν go-live. Έγκαιρη άντληση!</span>
+          <span class="help crit-tip">ΑΑΔΕ API keys απαραίτητα πριν go-live — αντλήστε έγκαιρα.</span>
         </div>
 
         <div class="field">
@@ -1183,16 +1239,16 @@
             <input class="yn-opt no-opt" type="radio" name="kmesAccount" id="km-n" value="Όχι">
             <label class="yn-label" for="km-n">Όχι</label>
           </div>
-          <span class="help crit-tip">Κεντρικό Μητρώο Εφοδιαστικής Αλυσίδας – εγγραφή στο gsis.gr.</span>
+          <span class="help">Κεντρικό Μητρώο Εφοδιαστικής Αλυσίδας – εγγραφή στο gsis.gr.</span>
         </div>
 
       </div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 9 – LOYALTY & CRM
-  ═══════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════
+       SECTION 9 – LOYALTY & CRM  [collapsed]
+  ══════════════════════════════════════════════ -->
   <div class="section-card" id="s9">
     <div class="section-header" onclick="toggleSection(this)">
       <div class="sec-num">9</div>
@@ -1233,7 +1289,7 @@
             <input class="yn-opt no-opt" type="radio" name="smsNotif" id="sn-n" value="Όχι">
             <label class="yn-label" for="sn-n">Όχι</label>
           </div>
-          <span class="help info">ℹ Απαιτεί ενεργό πακέτο SMS gateway.</span>
+          <span class="help">Απαιτεί ενεργό πακέτο SMS gateway.</span>
         </div>
 
         <div class="field">
@@ -1250,9 +1306,9 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       SECTION 10 – TRAINING & SUPPORT
-  ═══════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════
+       SECTION 10 – TRAINING & SUPPORT  [collapsed]
+  ══════════════════════════════════════════════ -->
   <div class="section-card" id="s10">
     <div class="section-header" onclick="toggleSection(this)">
       <div class="sec-num">10</div>
@@ -1266,12 +1322,12 @@
       <div class="field-grid">
 
         <div class="field">
-          <label>Αριθμός Εργαζομένων για Training <span class="req">*</span> <span class="crit">ΚΡΙΣΙΜΟ</span></label>
+          <label>Αριθμός Εργαζομένων για Training <span class="req">*</span></label>
           <input type="number" name="numTrainees" min="1" placeholder="π.χ. 5">
         </div>
 
         <div class="field">
-          <label>Training Frontend (Ταμείο) Απαιτείται; <span class="crit">ΚΡΙΣΙΜΟ</span></label>
+          <label>Training Frontend (Ταμείο) Απαιτείται;</label>
           <div class="yn-group">
             <input class="yn-opt" type="radio" name="frontendTrain" id="ft-y" value="Ναι">
             <label class="yn-label" for="ft-y">Ναι</label>
@@ -1301,7 +1357,7 @@
         </div>
 
         <div class="field">
-          <label>Προτιμώμενες Ημερομηνίες Training <span class="crit">ΚΡΙΣΙΜΟ</span></label>
+          <label>Προτιμώμενες Ημερομηνίες Training</label>
           <input type="text" name="trainingDates" placeholder="π.χ. 15/07/2025 – 17/07/2025 (πρωινές ώρες)">
         </div>
 
@@ -1314,10 +1370,9 @@
     </div>
   </div>
 
-
-  <!-- ═══════════════════════════════════════════
-       SECTION 11 – ADDITIONAL NOTES
-  ═══════════════════════════════════════════ -->
+  <!-- ══════════════════════════════════════════════
+       SECTION 11 – ADDITIONAL NOTES  [collapsed]
+  ══════════════════════════════════════════════ -->
   <div class="section-card" id="s11">
     <div class="section-header" onclick="toggleSection(this)">
       <div class="sec-num">11</div>
@@ -1329,7 +1384,6 @@
     </div>
     <div class="section-body">
       <div class="field-grid cols-1">
-
 
         <div class="field">
           <label>Ειδικές Απαιτήσεις <span class="opt">ΠΡΟΑΙΡΕΤΙΚΟ</span></label>
@@ -1345,31 +1399,44 @@
     </div>
   </div>
 
-  <!-- SUBMIT FOOTER -->
+  <!-- ══ SUBMIT FOOTER ══ -->
   <div class="submit-footer">
     <div>
-      <div style="font-weight:600; font-size:14px; color:#fff;">Υποβολή Φόρμας Intake</div>
-      <div class="submit-info">Βεβαιωθείτε ότι όλα τα υποχρεωτικά πεδία (<span style="color:#fc8181">*</span>) έχουν συμπληρωθεί πριν την υποβολή.</div>
+      <div style="font-weight:700; font-size:15px;">Έτοιμοι για υποβολή;</div>
+      <div class="submit-info">Βεβαιωθείτε ότι τα υποχρεωτικά πεδία (<span style="color:#fc8181">*</span>) και τα πεδία ΚΡΙΣΙΜΟ έχουν συμπληρωθεί.</div>
     </div>
-    <button type="submit" class="btn-submit">✔ Υποβολή Φόρμας</button>
+    <button type="submit" class="btn-submit">✔ Ολοκλήρωση &amp; Υποβολή</button>
   </div>
 
   </form>
 </main>
 
 <script>
+  // Set today's date
   document.getElementById('submitDate').value = new Date().toISOString().split('T')[0];
 
+  // ── Accordion: one section open at a time ──
   function toggleSection(header) {
-    const body = header.nextElementSibling;
-    const isCollapsed = body.style.display === 'none';
-    body.style.display = isCollapsed ? '' : 'none';
-    header.classList.toggle('collapsed', !isCollapsed);
+    const card = header.closest('.section-card');
+    const isOpen = card.classList.contains('open');
+
+    if (isOpen) {
+      // Close this one
+      card.classList.remove('open');
+    } else {
+      // Close all others first
+      document.querySelectorAll('.section-card.open').forEach(c => c.classList.remove('open'));
+      // Open this one
+      card.classList.add('open');
+      // Smooth scroll into view
+      setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    }
   }
 
-  // Sidebar active state on scroll
+  // ── Sidebar active state on scroll ──
   const sections = document.querySelectorAll('.section-card');
   const navItems = document.querySelectorAll('.nav-item');
+
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(sec => {
@@ -1381,76 +1448,28 @@
     });
   }, { passive: true });
 
-  // Progress bar
-  function updateProgress() {
-    const inputs = document.querySelectorAll('input[required], select[required]');
-    const filled = Array.from(inputs).filter(i => i.value.trim() !== '').length;
-    const pct = Math.round((filled / inputs.length) * 100);
-    document.getElementById('progressFill').style.width = pct + '%';
-  }
-  document.getElementById('intakeForm').addEventListener('input', updateProgress);
-  document.getElementById('intakeForm').addEventListener('change', updateProgress);
-
-  // Export JSON
-  function exportForm() {
-    const form = document.getElementById('intakeForm');
-    const data = {};
-    const elements = form.querySelectorAll('input, select, textarea');
-    elements.forEach(el => {
-      if (!el.name) return;
-      if (el.type === 'radio') {
-        if (el.checked) data[el.name] = el.value;
-      } else {
-        data[el.name] = el.value;
-      }
-    });
-    data._exportDate = new Date().toISOString();
-    data._formVersion = 'v1.0';
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'pharmacy_intake_' + (data.pharmacyName || 'form').replace(/\s+/g, '_') + '.json';
-    a.click();
-    URL.revokeObjectURL(url);
-  }
-
-  // Submit handler
+  // ── Submit handler ──
   document.getElementById('intakeForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-  e.preventDefault();
+    const formData = new FormData(this);
+    const data = {};
+    formData.forEach((value, key) => { data[key] = value; });
+    data.submittedAt = new Date().toISOString();
 
-  const formData = new FormData(this);
-  const data = {};
-
-  formData.forEach((value, key) => {
-    data[key] = value;
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwCA9npigmVA8DEKGzHTIshyle3UgMw_emQCBpzyNZ0HlUlBhiMAwOjDfLKkyFh8TVq/exec', {
+        method: 'POST',
+        body: JSON.stringify(data)
+      });
+      await response.text();
+      alert('✔ Η φόρμα υποβλήθηκε επιτυχώς!');
+      this.reset();
+    } catch (err) {
+      console.error(err);
+      alert('❌ Σφάλμα κατά την υποβολή.');
+    }
   });
-
-  data.submittedAt = new Date().toISOString();
-
-  try {
-
-    const response = await fetch('https://script.google.com/macros/s/AKfycbwCA9npigmVA8DEKGzHTIshyle3UgMw_emQCBpzyNZ0HlUlBhiMAwOjDfLKkyFh8TVq/exec', {
-      method: 'POST',
-      body: JSON.stringify(data)
-    });
-
-    const result = await response.text();
-
-    alert('✔ Η φόρμα υποβλήθηκε επιτυχώς!');
-
-    this.reset();
-
-  } catch (err) {
-
-    console.error(err);
-
-    alert('❌ Σφάλμα κατά την υποβολή.');
-
-  }
-
-});
 </script>
 </body>
 </html>
